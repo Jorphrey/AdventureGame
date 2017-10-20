@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="600" maxWidth="-800" minHeight="-00" minWidth="800" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="600" maxWidth="-800" minHeight="-00" minWidth="800" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TitleScreen.TitleScreen">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -136,12 +136,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Attack" GridPane.columnIndex="6">
+            <Button fx:id="attackButton" mnemonicParsing="false" onAction="#outputScreen" text="Attack" GridPane.columnIndex="6">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Magic" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <Button fx:id="magicButton" mnemonicParsing="false" text="Magic" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -150,10 +150,13 @@
       </GridPane>
    </bottom>
    <center>
-      <SplitPane dividerPositions="0.5" maxWidth="400.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane />
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TextArea fx:id="eventScreen" disable="true" editable="false" layoutX="-1.0" layoutY="-2.0" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" prefHeight="400.0" prefWidth="400.0" scrollTop="1.0" wrapText="true" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </center>
