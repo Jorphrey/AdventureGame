@@ -5,5 +5,20 @@ package Enemy;
             super(hp, mp, attack, defense);
         }
 
+        @Override
+        public void attack() {
+
+        }
+
+        @Override
+        public void defend() {
+
+        }
+
+        @Override
+        public void magic() {
+
+        }
+
 
     }

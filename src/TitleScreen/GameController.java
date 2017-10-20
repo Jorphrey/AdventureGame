@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TitleScreen {
+public class GameController {
 
     @FXML
     private TextArea eventScreen;
@@ -25,7 +25,7 @@ public class TitleScreen {
     List<String> eventOutput;
 
 
-    public TitleScreen() {
+    public GameController() {
         eventOutput = new ArrayList<String>();
         //player = createPlayer();
         count = 0;
