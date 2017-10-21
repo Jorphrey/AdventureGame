@@ -16,6 +16,7 @@ public class Main extends Application {
         primaryStage.setTitle("Adventure Game");
         //primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
