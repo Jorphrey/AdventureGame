@@ -2,11 +2,14 @@ package Enemy;
 
 import Items.Item;
 import Player.Player;
+import TitleScreen.Game;
 
 import java.util.List;
 import java.util.Random;
 
-public abstract class Enemy<T> {
+public abstract class Enemy {
+    protected Game game;
+    protected boolean isAlive;
     protected int healthMod;
     protected int magicMod;
     protected int shell;
@@ -21,7 +24,8 @@ public abstract class Enemy<T> {
     protected int gold;
 
 
-    public Enemy(String name, Player player, int healthMod, int magicMod) {
+    public Enemy(String name, Player player, int healthMod, int magicMod, Game game) {
+        this.game = game;
         this.healthMod = healthMod;
         this.magicMod = magicMod;
         random = new Random();
@@ -83,5 +87,29 @@ public abstract class Enemy<T> {
 
     public int getMagicMod() {
         return magicMod;
+    }
+
+    public void setShell(int shell) {
+        this.shell = shell;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setCurrentHP(int currentHP) {
+        this.currentHP += currentHP;
+    }
+
+    public void setCurrentMP(int currentMP) {
+        this.currentMP = currentMP;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    public void setMaxMP(int maxMP) {
+        this.maxMP = maxMP;
     }
 }

@@ -3,12 +3,13 @@ package Enemy.BasicEnemy;
 import Enemy.Enemy;
 import Items.Item;
 import Player.Player;
+import TitleScreen.Game;
 
 
 import java.util.List;
 import java.util.Random;
 
-public abstract class BasicEnemy<T> extends Enemy{
+public abstract class BasicEnemy extends Enemy {
     private int magic;
     private int maxHP;
     private int maxMP;
@@ -20,16 +21,16 @@ public abstract class BasicEnemy<T> extends Enemy{
     private Random random;
     private List<Item> loot;
 
-    public BasicEnemy(String name, Player player, int healthMod, int magicMod) {
-        super(name, player, healthMod, magicMod);
+    public BasicEnemy(String name, Player player, int healthMod, int magicMod, Game game) {
+        super(name, player, healthMod, magicMod, game);
         this.maxHP = healthMod + (player.getLevel() * 10);
         this.maxMP = magicMod + (player.getLevel() * 5);
         this.currentHP = this.maxHP;
         this.currentMP = this.maxMP;
-        this.attack = healthMod/10 + player.getLevel();
-        this.defense = healthMod/10 + player.getLevel();
-        this.shell = magicMod/10 + player.getLevel();
-        this.magic = magicMod/10 + player.getLevel();
+        this.attack = healthMod / 10 + player.getLevel();
+        this.defense = healthMod / 10 + player.getLevel();
+        this.shell = magicMod / 10 + player.getLevel();
+        this.magic = magicMod / 10 + player.getLevel();
 
         this.random = new Random();
 
@@ -37,7 +38,9 @@ public abstract class BasicEnemy<T> extends Enemy{
 
     @Override
     public void attack() {
-        player.setCurrentHp(random.nextInt(-(this.attack + 7 - this.attack - 7) - this.attack - 7));
+        int attack = random.nextInt(((this.attack + 7) - (this.attack - 7) + 1) + this.attack - 7);
+        player.setCurrentHp(-attack);
+        game.outputScreen("\t" + getName() + " attacked " + player.getName() + " for " + attack + " damage.");
     }
 
     @Override
@@ -99,9 +102,9 @@ public abstract class BasicEnemy<T> extends Enemy{
     }
 
     public void setCurrentHP(int currentHP) {
-        if(this.currentHP + currentHP > this.maxHP){
+        if (this.currentHP + currentHP > this.maxHP) {
             this.currentHP = this.maxHP;
-        }else {
+        } else {
             this.currentHP += currentHP;
         }
     }

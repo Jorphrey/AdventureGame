@@ -3,11 +3,16 @@
 package Player;
 
 
+import Enemy.Enemy;
 import Items.Item;
+import TitleScreen.Game;
 
 import java.util.List;
+import java.util.Random;
 
 public class Player {
+    private Game game;
+    private Enemy e;
     private String name;
     private String playerClass;
     private int maxHP;
@@ -24,8 +29,12 @@ public class Player {
     private int maxXP;
     private int gold;
     private List<Item> inventory;
+    private Random random;
+    private Boolean isCrit;
 
-    public Player(String name, String playerClass) {
+    public Player(String name, String playerClass, Game game) {
+        this.game = game;
+        this.random = new Random();
         this.name = name;
         this.level = 1;
         this.currentXP = 0;
@@ -37,6 +46,7 @@ public class Player {
         this.playerClass = playerClass;
         this.defense = 0;
         this.shell = 0;
+        this.isCrit = false;
         switch (playerClass) {
             case "RadioButton[id=wizard, styleClass=radio-button]'Wizard'":
                 this.intellect = 30;
@@ -52,6 +62,25 @@ public class Player {
                 this.strength = 10;
                 this.agility = 10;
         }
+    }
+
+    public void attack(Enemy e) {
+        int attack = random.nextInt((this.strength + this.level * 5) - (this.strength - this.level * 5) + 1
+                + this.strength - this.level * 5);
+
+        if (random.nextInt((100 - 0) - 0) < this.agility) {
+            isCrit = true;
+            attack = attack * 2;
+        }
+
+        e.setCurrentHP(-attack);
+
+        if (isCrit) {
+            game.outputScreen((this.name + " critted " + e.getName() + " for " + attack + " damage."));
+        } else {
+            game.outputScreen((this.name + " attacked " + e.getName() + " for " + attack)+ " damage.");
+        }
+        isCrit = false;
     }
 
 

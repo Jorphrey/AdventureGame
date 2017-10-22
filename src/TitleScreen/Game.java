@@ -77,9 +77,8 @@ public class Game implements Initializable {
     private Button right;
 
     @FXML
-    private Player player;
-    private int count;
-    List<String> eventOutput;
+    private static Player player;
+    private static List<String> eventOutput;
     private Level level;
     private Room room;
     private Bat bat;
@@ -88,6 +87,7 @@ public class Game implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+        eventOutput = new ArrayList<>();
         eventScreen.setText("Click Enter below to start");
         playerHP.setStyle("-fx-accent:red;");
         playerMP.setStyle("-fx-accent:limegreen;");
@@ -138,16 +138,20 @@ public class Game implements Initializable {
         playerMP.setProgress((float)player.getCurrentMP()/ player.getMaxMP());
         playerXP.setProgress((float)player.getCurrentXP()/ player.getMaxXP());
 
-        Enemy bat2 = new Bat("Bat", player, 50, 20);
-        Enemy bat = new Bat("Bat2", player, 50, 20);
-        Enemy bat3 = new Bat("Bat3", player, 50, 20);
+        Enemy bat2 = new Bat("Bat", player, 50, 20, this);
+        Enemy bat = new Bat("Bat2", player, 50, 20, this);
+        Enemy bat3 = new Bat("Bat3", player, 50, 20, this);
 
         enemies.add(bat);
         enemies.add(bat2);
         enemies.add(bat3);
 
 
-        Enemy e = enemies.get(0);
+        int i = 0;
+        Enemy e = enemies.get(i);
+        if(e.getCurrentHP() == 0){
+          i++;
+        }
 
         enemyName.setText(e.getName());
         enemyHP.setProgress((float) e.getCurrentHP() / e.getMaxHP());
@@ -155,12 +159,15 @@ public class Game implements Initializable {
         enemyShell.setText(Integer.toString(e.getShell()));
         enemyDefense.setText(Integer.toString(e.getDefense()));
 
-        System.out.println(e.getCurrentHP() + " " + e.getMaxHP());
     }
 
     public void attackButton() {
-        player.setCurrentHp(-10);
+        Enemy e = enemies.get(0);
+        player.attack(e);
+        e.attack();
+
         update();
+
 
     }
 

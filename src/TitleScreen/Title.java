@@ -70,7 +70,7 @@ public class Title implements Initializable {
                     Stage gameStage = new Stage();
                     gameStage.setResizable(false);
                     Game game = fxmlLoader.getController();
-                    game.setPlayer(new Player(name.getText(), group.getSelectedToggle().toString()));
+                    game.setPlayer(new Player(name.getText(), group.getSelectedToggle().toString(), game));
                     gameStage.setTitle("Adventure Game");
                     gameStage.setScene(new Scene(root1));
 
