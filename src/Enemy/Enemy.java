@@ -1,90 +1,87 @@
 package Enemy;
 
 import Items.Item;
+import Player.Player;
 
 import java.util.List;
 import java.util.Random;
 
-public abstract class Enemy {
-    private int hp;
-    private int mp;
-    private int attack;
-    private int defense;
-    private int shell;
-    private int gold;
+public abstract class Enemy<T> {
+    protected int healthMod;
+    protected int magicMod;
+    protected int shell;
+    protected int defense;
+    protected int currentHP;
+    protected int currentMP;
+    protected int maxHP;
+    protected int maxMP;
+    protected String name;
+    protected Player player;
     private Random random;
-    private List<Item> loot;
+    protected int gold;
 
-    public Enemy(int hp, int mp, int attack, int defense){
 
-        this.hp = hp;
-        this.mp = mp;
-        this.attack = attack;
-        this.defense = defense;
-
+    public Enemy(String name, Player player, int healthMod, int magicMod) {
+        this.healthMod = healthMod;
+        this.magicMod = magicMod;
+        random = new Random();
+        this.name = name;
+        this.player = player;
+        this.gold = random.nextInt(((player.getLevel()*10) + player.getLevel()*5 ) -
+                ((player.getLevel()*10 - player.getLevel()*5) + player.getLevel()*10 - player.getLevel()*5));
     }
 
     public abstract void attack();
+
     public abstract void defend();
+
     public abstract void magic();
 
-    public int getHp() {
-        return hp;
+    public String toString() {
+        return this.name;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
+    public String getName() {
+        return name;
     }
 
-    public int getMp() {
-        return mp;
-    }
-
-    public void setMp(int mp) {
-        this.mp += mp;
-    }
-
-    public int getAttack() {
-        return attack;
-    }
-
-    public void setAttack(int attack) {
-        this.attack += attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense += defense;
-    }
-
-    public int getShell() {
-        return shell;
-    }
-
-    public void setShell(int shell) {
-        this.shell += shell;
-    }
-
-    public Random getRandom() {
-        return random;
+    public Player getPlayer() {
+        return player;
     }
 
     public int getGold() {
         return gold;
     }
 
-    public void setGold(int gold) {
-        this.gold = gold;
+    public int getCurrentHP() {
+        return currentHP;
     }
 
-    public List<Item> getLoot() {
-        return loot;
+    public int getCurrentMP() {
+        return currentMP;
     }
 
-    public void setLoot(List<Item> loot) {
-        this.loot = loot;
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public int getMaxMP() {
+        return maxMP;
+    }
+
+    public int getShell() {
+        return shell;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getHealthMod() {
+        return healthMod;
+    }
+
+    public int getMagicMod() {
+        return magicMod;
     }
 }

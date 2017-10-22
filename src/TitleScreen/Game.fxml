@@ -20,9 +20,9 @@
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="15.0" minHeight="9.0" prefHeight="9.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="46.0" minHeight="35.0" prefHeight="46.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="20.0" prefHeight="20.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <ProgressBar fx:id="playerXP" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="350.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -46,6 +46,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
+            <Label fx:id="playerLevel" prefHeight="17.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </top>
@@ -70,10 +71,6 @@
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin></ComboBox>
-            <ChoiceBox prefWidth="150.0">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin></ChoiceBox>
             <ComboBox prefWidth="150.0" GridPane.columnIndex="7">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -146,16 +143,66 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
+            <ComboBox prefWidth="150.0">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </ComboBox>
          </children>
       </GridPane>
    </bottom>
    <center>
       <SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane />
+          <AnchorPane>
+               <children>
+                  <GridPane alignment="CENTER" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Label alignment="CENTER" layoutX="170.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" layoutX="170.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
+                        <Label alignment="CENTER" layoutX="90.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" layoutX="90.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" layoutX="330.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" layoutX="330.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" layoutX="250.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" layoutX="170.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" layoutX="250.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" layoutX="90.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" layoutX="90.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" layoutX="330.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" layoutX="330.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" />
+                        <Label alignment="CENTER" layoutX="330.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" layoutX="250.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" layoutX="170.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" layoutX="90.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" layoutX="170.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" />
+                        <Label alignment="CENTER" layoutX="170.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" />
+                        <Label alignment="CENTER" layoutX="250.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" layoutX="250.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" />
+                     </children>
+                  </GridPane>
+               </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TextArea fx:id="eventScreen" editable="false" layoutX="-1.0" layoutY="-2.0" maxHeight="200.0" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0" scrollTop="1.0" wrapText="true" />
+                  <TextArea fx:id="eventScreen" editable="false" layoutX="-1.0" layoutY="-1.0" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0" scrollTop="1.0" wrapText="true" />
                </children></AnchorPane>
         </items>
       </SplitPane>
@@ -238,11 +285,11 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="playerIntellect" text="Label" GridPane.columnIndex="1" />
-                  <Label fx:id="playerStrength" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="playerAgility" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="playerDefense" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="playerShell" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="playerIntellect" GridPane.columnIndex="1" />
+                  <Label fx:id="playerStrength" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="playerAgility" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="playerDefense" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="playerShell" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>
@@ -252,7 +299,10 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Pane minHeight="20.0" prefHeight="20.0" prefWidth="200.0" />
+            <Pane minHeight="20.0" prefHeight="20.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="enemyName" alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="2.0" prefHeight="17.0" prefWidth="148.0" />
+               </children></Pane>
             <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" />
@@ -273,12 +323,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <ProgressBar maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1">
+                  <ProgressBar fx:id="enemyHP" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ProgressBar>
-                  <ProgressBar maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <ProgressBar fx:id="enemyMP" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -298,17 +348,17 @@
                   <RowConstraints maxHeight="35.0" minHeight="35.0" prefHeight="35.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Intellect">
+                  <Label text="Spell">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Strength" GridPane.rowIndex="1">
+                  <Label text="Ability" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Agility" GridPane.rowIndex="2">
+                  <Label text="Item" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -328,6 +378,11 @@
                   <Label GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="enemyIntellect" GridPane.columnIndex="1" />
+                  <Label fx:id="enemyStrength" layoutX="146.0" layoutY="19.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="enemyAgility" layoutX="146.0" layoutY="54.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="enemyDefense" layoutX="146.0" layoutY="89.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="enemyShell" layoutX="146.0" layoutY="124.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>

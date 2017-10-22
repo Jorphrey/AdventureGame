@@ -10,10 +10,10 @@ import java.util.List;
 public class Player {
     private String name;
     private String playerClass;
-    private int maxHp;
-    private int maxMp;
-    private int currentMp;
-    private int currentHp;
+    private int maxHP;
+    private int maxMP;
+    private int currentMP;
+    private int currentHP;
     private int intellect;
     private int strength;
     private int agility;
@@ -28,12 +28,12 @@ public class Player {
     public Player(String name, String playerClass) {
         this.name = name;
         this.level = 1;
-        this.currentXP = 50;
-        this.maxHp = 100;
-        this.maxMp = 100;
-        this.maxHp = 100;
-        this.currentHp = 50;
-        this.currentMp = 50;
+        this.currentXP = 0;
+        this.maxXP = 100;
+        this.maxMP = 100;
+        this.maxHP = 100;
+        this.currentHP = this.maxHP;
+        this.currentMP = this.maxMP;
         this.playerClass = playerClass;
         this.defense = 0;
         this.shell = 0;
@@ -71,20 +71,20 @@ public class Player {
         this.playerClass = playerClass;
     }
 
-    public int getMaxHp() {
-        return this.maxHp;
+    public int getMaxHP() {
+        return this.maxHP;
     }
 
-    public void setMaxHp(int hp) {
-        this.maxHp += hp;
+    public void setMaxHP(int hp) {
+        this.maxHP += hp;
     }
 
-    public int getMaxMp() {
-        return this.maxMp;
+    public int getMaxMP() {
+        return this.maxMP;
     }
 
-    public void setMaxMp(int mp) {
-        this.maxMp += mp;
+    public void setMaxMP(int mp) {
+        this.maxMP += mp;
     }
 
     public int getIntellect() {
@@ -107,21 +107,21 @@ public class Player {
         return getName();
     }
 
-    public int getCurrentMp() {
-        return this.currentMp;
+    public int getCurrentMP() {
+        return this.currentMP;
     }
 
-    public int getCurrentHp() {
-        return this.currentHp;
+    public int getCurrentHP() {
+        return this.currentHP;
     }
 
     public void setCurrentMp(int currentMp) {
 
-        this.currentMp += currentMp;
+        this.currentMP += currentMp;
     }
 
     public void setCurrentHp(int currentHp) {
-        this.currentHp += currentHp;
+        this.currentHP += currentHp;
     }
 
     public int getAgility() {
@@ -149,7 +149,7 @@ public class Player {
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public void setLevel(int level) {
