@@ -1,6 +1,7 @@
 package Enemy;
 
 import Items.Item;
+import Items.LootFactory;
 import Player.Player;
 import TitleScreen.Game;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 public abstract class Enemy {
+    protected int level;
     protected Game game;
     protected boolean isAlive;
     protected int healthMod;
@@ -22,17 +24,20 @@ public abstract class Enemy {
     protected Player player;
     private Random random;
     protected int gold;
+    protected ENUMYTYPE enumytype;
+    protected List<Item> loot;
+    private LootFactory lootFactory;
 
 
-    public Enemy(String name, Player player, int healthMod, int magicMod, Game game) {
+    public Enemy(Player player, Game game) {
+        lootFactory = new LootFactory();
         this.game = game;
-        this.healthMod = healthMod;
-        this.magicMod = magicMod;
         random = new Random();
-        this.name = name;
         this.player = player;
         this.gold = random.nextInt(((player.getLevel()*10) + player.getLevel()*5 ) -
                 ((player.getLevel()*10 - player.getLevel()*5) + player.getLevel()*10 - player.getLevel()*5));
+        this.loot = lootFactory.getLoot(this);
+        this.level = player.getLevel();
     }
 
     public abstract void attack();
@@ -112,4 +117,6 @@ public abstract class Enemy {
     public void setMaxMP(int maxMP) {
         this.maxMP = maxMP;
     }
+
+
 }

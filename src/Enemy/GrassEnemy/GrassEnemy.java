@@ -1,4 +1,4 @@
-package Enemy.BasicEnemy;
+package Enemy.GrassEnemy;
 
 import Enemy.Enemy;
 import Items.Item;
@@ -9,30 +9,20 @@ import TitleScreen.Game;
 import java.util.List;
 import java.util.Random;
 
-public abstract class BasicEnemy extends Enemy {
-    private int magic;
-    private int maxHP;
-    private int maxMP;
-    private int currentHP;
-    private int currentMP;
-    private int attack;
-    private int defense;
-    private int shell;
+public abstract class GrassEnemy extends Enemy {
+    protected int magic;
+    protected int maxHP;
+    protected int maxMP;
+    protected int currentHP;
+    protected int currentMP;
+    protected int attack;
+    protected int defense;
+    protected int shell;
     private Random random;
-    private List<Item> loot;
+    protected List<Item> loot;
 
-    public BasicEnemy(String name, Player player, int healthMod, int magicMod, Game game) {
-        super(name, player, healthMod, magicMod, game);
-        this.maxHP = healthMod + (player.getLevel() * 10);
-        this.maxMP = magicMod + (player.getLevel() * 5);
-        this.currentHP = this.maxHP;
-        this.currentMP = this.maxMP;
-        this.attack = healthMod / 10 + player.getLevel();
-        this.defense = healthMod / 10 + player.getLevel();
-        this.shell = magicMod / 10 + player.getLevel();
-        this.magic = magicMod / 10 + player.getLevel();
-
-        this.random = new Random();
+    public GrassEnemy(Player player, Game game) {
+        super( player, game);
 
     }
 
@@ -108,4 +98,6 @@ public abstract class BasicEnemy extends Enemy {
             this.currentHP += currentHP;
         }
     }
+
+
 }

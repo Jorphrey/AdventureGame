@@ -5,8 +5,8 @@ import Player.Player;
 import TitleScreen.Game;
 
 public abstract class ForestEnemy extends Enemy {
-
-    public ForestEnemy(String name, Player player, int healthMod, int magicMod, Game game) {
-        super(name, player, healthMod, magicMod, game);
+    public ForestEnemy(Player player, Game game) {
+        super(player, game);
     }
 }
+
