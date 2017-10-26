@@ -1,4 +1,9 @@
 package Enemy.EnemyAttacks.Magic;
 
-public class RedMagic1 {
+public interface RedMagic1 {
+
+    public void mend();
+    public void fire();
+    public void freeze();
+
 }

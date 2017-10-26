@@ -1,38 +1,39 @@
 package Room;
 
-import Enemy.GrassEnemy.GrassEnumy;
-import Enemy.GrassEnemy.Bat;
-import Enemy.ENUMY;
 import Enemy.Enemy;
 import Items.Item;
 import Player.Player;
 import TitleScreen.Game;
 import Enemy.EnemyFactory;
-import Enemy.ENUMYTYPE;
-
+import Enemy.ENUMYRoom;
+import Enemy.ENUMYDifficulty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public abstract class Room {
 
     protected Game game;
     protected Player player;
     protected String unlocker;
+    protected String name;
     protected boolean isLocked;
     protected boolean hasLoot;
     protected boolean hasPuzzle;
     protected boolean hasEntered;
+    protected boolean hasEnemy;
     protected List<Enemy> enemies;
-    protected List<Item> loot;
+    protected Set<Item> loot;
     protected int rand;
     protected EnemyFactory enemyFactory;
-    protected String name;
-    protected ENUMYTYPE enumyType;
+    protected ENUMYRoom enumyType;
     protected Random random;
+    protected ENUMYDifficulty enumyDifficulty;
 
 
-    public Room(boolean isLocked, String unlocker, ENUMY enumy, List<Item> loot, boolean hasPuzzle, Player player, Game game) {
+    public Room(String name, boolean isLocked, String unlocker, ENUMYDifficulty enumyDifficulty, Set<Item> loot, boolean hasPuzzle, boolean hasEnemy, Player player, Game game) {
+        this.name = name;
         this.enemyFactory = new EnemyFactory();
         this.game = game;
         this.player = player;
@@ -43,6 +44,8 @@ public abstract class Room {
         this.hasEntered = false;
         this.enemies = new ArrayList<>();
         this.random = new Random();
+        this.enumyDifficulty = enumyDifficulty;
+
 
     }
 
@@ -58,7 +61,7 @@ public abstract class Room {
             game.outputScreen("There are no items here");
         } else {
             for (int i = 0; i < this.loot.size(); i++) {
-                System.out.println(this.loot.get(i) + " ");
+                System.out.println(this.loot.contains(i) + " ");
 
             }
         }
@@ -75,7 +78,52 @@ public abstract class Room {
 
     }
 
+    public EnemyFactory getEnemyFactory(){
+        return this.enemyFactory;
+    }
+
     public List<Enemy> getEnemies() {
         return enemies;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "name='" + name + '\'' +
+                ", isLocked=" + isLocked +
+                ", hasLoot=" + hasLoot +
+                ", hasPuzzle=" + hasPuzzle +
+                ", hasEntered=" + hasEntered +
+                ", hasEnemy=" + hasEnemy +
+                ", unLocker=" + unlocker +
+                '}';
+    }
+
+    public String getUnlocker() {
+        return unlocker;
+    }
+
+    public boolean isLocked() {
+        return isLocked;
+    }
+
+    public boolean isHasLoot() {
+        return hasLoot;
+    }
+
+    public boolean isHasPuzzle() {
+        return hasPuzzle;
+    }
+
+    public boolean isHasEntered() {
+        return hasEntered;
+    }
+
+    public boolean isHasEnemy() {
+        return hasEnemy;
+    }
+
+    public Set<Item> getLoot() {
+        return loot;
     }
 }

@@ -1,14 +1,10 @@
 package Items;
 
-public class Key implements Item{
-    String name;
+public class Key extends Item {
 
-    public Key (String name){
-        this.name = name;
-    }
-    @Override
-    public void takeItem() {
 
+    public Key(String name, int quantity, int maxQuantity) {
+        super(name, quantity, maxQuantity);
     }
 
     @Override

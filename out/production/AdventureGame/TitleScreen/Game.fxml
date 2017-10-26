@@ -133,12 +133,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="attackButton" mnemonicParsing="false" onAction="#attackButton" text="Attack" GridPane.columnIndex="6">
+            <Button fx:id="attackButton" mnemonicParsing="false" onAction="#setBoard" text="Attack" GridPane.columnIndex="6">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="magicButton" mnemonicParsing="false" onAction="#magicButton" text="Magic" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <Button fx:id="magicButton" mnemonicParsing="false" onAction="#createEnemies" text="Magic" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -156,7 +156,7 @@
         <items>
           <AnchorPane>
                <children>
-                  <GridPane alignment="CENTER" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0">
+                  <GridPane fx:id="board" alignment="CENTER" gridLinesVisible="true" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
@@ -165,39 +165,12 @@
                       <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
                     </rowConstraints>
-                     <children>
-                        <Label alignment="CENTER" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                        <Label alignment="CENTER" layoutX="170.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" layoutX="170.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" />
-                        <Label alignment="CENTER" layoutX="90.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" layoutX="90.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" layoutX="330.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" layoutX="330.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" layoutX="170.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" layoutX="90.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="170.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" layoutX="90.0" layoutY="130.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" layoutX="330.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" layoutX="330.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="4" />
-                        <Label alignment="CENTER" layoutX="330.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" layoutX="170.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" layoutX="90.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="90.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" layoutX="170.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" />
-                        <Label alignment="CENTER" layoutX="170.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" />
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="10.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" layoutX="250.0" layoutY="50.0" maxHeight="40.0" maxWidth="80.0" minHeight="40.0" minWidth="80.0" prefHeight="40.0" prefWidth="80.0" text="Label" textAlignment="CENTER" />
-                     </children>
                   </GridPane>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -311,27 +284,27 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="89.0" prefWidth="49.0" text="ATTACK" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                  <Button fx:id="enemyAttackFive" mnemonicParsing="false" onAction="#attackEnemy" prefHeight="89.0" prefWidth="49.0" text="ATTACK" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold" size="9.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="44.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="enemyAttackFour" layoutX="10.0" layoutY="44.0" mnemonicParsing="false" onAction="#attackEnemy" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="9.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="137.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                  <Button fx:id="enemyAttackThree" layoutX="10.0" layoutY="137.0" mnemonicParsing="false" onAction="#attackEnemy" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                      <font>
                         <Font name="System Bold" size="9.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="230.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Button fx:id="enemyAttackTwo" layoutX="10.0" layoutY="230.0" mnemonicParsing="false" onAction="#attackEnemy" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="9.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="323.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Button fx:id="enemyAttackOne" layoutX="10.0" layoutY="323.0" mnemonicParsing="false" onAction="#attackEnemy" prefHeight="90.0" prefWidth="49.0" text="ATTACK" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="9.0" />
                      </font>

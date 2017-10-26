@@ -1,21 +1,29 @@
-package Enemy.GrassEnemy;
+package Enemy.CritterEnemy;
 
 import Enemy.Enemy;
-import Items.Item;
 import Player.Player;
 import TitleScreen.Game;
-import Enemy.ENUMYTYPE;
+import Enemy.ENUMYRoom;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-
-public abstract class GrassEnemy extends Enemy {
+public abstract class CritterEnemy extends Enemy {
 
 
-    public GrassEnemy(Player player, Game game, ENUMYTYPE enumy) {
+    public CritterEnemy(Player player, Game game, ENUMYRoom enumy) {
         super(player, game, enumy);
+        this.maxLevel = 10;
+        this.defense = 10;
 
+        if (this.player.getLevel() <= getMaxLevel()) {
+            this.level = this.player.getLevel();
+        } else {
+            this.level = getMaxLevel();
+        }
+
+        this.maxHP = this.level * 50 + this.enumy.getLevel() * 50;
+        this.maxMP = this.level * 25 + this.enumy.getLevel() * 25;
+
+        this.currentHP = this.maxHP;
+        this.currentMP = this.maxMP;
     }
 
 

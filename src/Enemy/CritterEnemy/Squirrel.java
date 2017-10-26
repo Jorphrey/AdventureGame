@@ -1,17 +1,22 @@
-package Enemy.GrassEnemy;
+package Enemy.CritterEnemy;
 
-import Enemy.ENUMYTYPE;
+import Enemy.ENUMYRoom;
 import Player.Player;
 import TitleScreen.Game;
 
-import java.util.HashSet;
+public class Squirrel extends CritterEnemy {
+    public static int enemyCount = 1;
 
-public class Squirrel extends GrassEnemy {
 
+    public Squirrel(Player player, Game game, ENUMYRoom enumy) {
+        super(player, game, enumy);
 
-    public Squirrel(Player player, Game game, int maxLevel, ENUMYTYPE enumy, HashSet<String> shell, int defense) {
-        super(player, game, maxLevel, enumy, shell, defense);
-        this.name = "Squirrel";
+        if (enemyCount > 1) {
+            this.name = "Squirrel " + enemyCount;
+        } else {
+            this.name = "Squirrel";
+        }
+        this.shell.add("fire");
     }
 }
 

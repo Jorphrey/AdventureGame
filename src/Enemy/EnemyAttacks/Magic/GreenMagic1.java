@@ -1,4 +1,8 @@
 package Enemy.EnemyAttacks.Magic;
 
-public class GreenMagic1 {
+public interface GreenMagic1 {
+
+    public void leech();
+    public void venom();
+
 }

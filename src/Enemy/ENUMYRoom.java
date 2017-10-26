@@ -1,12 +1,12 @@
 package Enemy;
 
-public enum ENUMYTYPE {
+public enum ENUMYRoom {
     GRASS("Grass", 0), FOREST("Forest", 1);
 
     private final String name;
     private final int level;
 
-    ENUMYTYPE(String namee, int levele){
+    ENUMYRoom(String namee, int levele){
         name = namee;
         level = levele;
     }

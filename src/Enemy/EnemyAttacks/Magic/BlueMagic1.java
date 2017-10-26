@@ -1,4 +1,4 @@
 package Enemy.EnemyAttacks.Magic;
 
-public class BlueMagic1 {
+public interface BlueMagic1 {
 }

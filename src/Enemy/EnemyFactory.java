@@ -1,35 +1,36 @@
 package Enemy;
 
-import Enemy.GrassEnemy.Bat;
-import Enemy.GrassEnemy.Millipede;
-import Enemy.GrassEnemy.Rat;
-import Enemy.GrassEnemy.Squirrel;
+import Enemy.CritterEnemy.Bat;
+import Enemy.CritterEnemy.Millipede;
+import Enemy.CritterEnemy.Rat;
+import Enemy.CritterEnemy.Squirrel;
 import TitleScreen.Game;
 import Player.Player;
+import Enemy.ENUMYRoom;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
+import java.util.Set;
 
 
 public class EnemyFactory {
+    Set<String> shell;
 
-
-    public Enemy makeEnemy(ENUMYTYPE type, int enumSize, Player player, Game game) {
+    public Enemy makeEnemy(ENUMYRoom type, int enumSize, Player player, Game game) {
 
         Random random = new Random();
+
         int rand = random.nextInt(enumSize);
 
         if (type.getName().equals("Grass")) {
             switch (rand) {
                 case 0:
-                    return new Bat(player, game);
+                    return new Bat(player, game, type);
                 case 1:
-                    return new Millipede(player, game);
+                    return new Millipede(player, game, type);
                 case 2:
-                    return new Rat(player, game);
+                    return new Rat(player, game, type);
                 case 3:
-                    return new Squirrel(player, game);
+                    return new Squirrel(player, game, type);
             }
 
         }
@@ -41,7 +42,7 @@ public class EnemyFactory {
 
 
 
-        /*Attempting to use reflection to add new enemy based only on the ENUMYTYPE string name given by the room
+        /*Attempting to use reflection to add new enemy based only on the ENUMYRoom string name given by the room
           room that is creating the enemy.
           Will try to implement in the future
 

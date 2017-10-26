@@ -1,4 +1,7 @@
 package Enemy.EnemyAttacks.Magic;
 
-public class WhiteMagic1 {
+public interface WhiteMagic1 {
+
+    public void heal();
+    public void shell(String magic);
 }

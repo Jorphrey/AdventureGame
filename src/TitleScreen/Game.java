@@ -1,21 +1,17 @@
 package TitleScreen;
 
-import Enemy.ENUMYTYPE;
-import Enemy.EnemyFactory;
-import Enemy.GrassEnemy.Bat;
+import Enemy.CritterEnemy.Bat;
 import Enemy.Enemy;
-import Items.Drink;
-import Items.Item;
-import Items.Key;
 import Level.Level;
+import Level.TheGnarl;
 import Player.Player;
-import Room.ForestRoom;
-import Room.GrassRoom;
 import Room.Room;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import Enemy.ENUMY;
+import javafx.scene.layout.GridPane;
+
+
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -42,11 +38,15 @@ public class Game implements Initializable {
     @FXML
     private Label enemyNameOne;
     @FXML
+    private Button enemyAttackOne;
+    @FXML
     private ProgressBar enemyHPTwo;
     @FXML
     private ProgressBar enemyMPTwo;
     @FXML
     private Label enemyNameTwo;
+    @FXML
+    private Button enemyAttackTwo;
     @FXML
     private ProgressBar enemyHPThree;
     @FXML
@@ -54,17 +54,23 @@ public class Game implements Initializable {
     @FXML
     private Label enemyNameThree;
     @FXML
+    private Button enemyAttackThree;
+    @FXML
     private ProgressBar enemyHPFour;
     @FXML
     private ProgressBar enemyMPFour;
     @FXML
     private Label enemyNameFour;
     @FXML
+    private Button enemyAttackFour;
+    @FXML
     private ProgressBar enemyHPFive;
     @FXML
     private ProgressBar enemyMPFive;
     @FXML
     private Label enemyNameFive;
+    @FXML
+    private Button enemyAttackFive;
     @FXML
     private ProgressBar playerCompletion;
     @FXML
@@ -95,8 +101,12 @@ public class Game implements Initializable {
     private Button back;
     @FXML
     private Button right;
-
     @FXML
+    private GridPane board;
+    @FXML
+    private Label gridLabel[][];
+
+
     private static Player player;
     private static List<String> eventOutput;
     private Level level;
@@ -107,6 +117,7 @@ public class Game implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
+
         eventOutput = new ArrayList<>();
         eventScreen.setText("Click Enter below to start");
         playerHP.setStyle("-fx-accent:red;");
@@ -124,11 +135,17 @@ public class Game implements Initializable {
         enemyMPFive.setStyle("-fx-accent:limegreen;");
         enemies = new ArrayList<Enemy>();
 
+        enemyAttackOne.setDisable(true);
+        enemyAttackTwo.setDisable(true);
+        enemyAttackThree.setDisable(true);
+        enemyAttackFour.setDisable(true);
+        enemyAttackFive.setDisable(true);
 
     }
 
     public void setPlayerOnScreen() {
-        outputScreen("Click Begin to Start");
+
+
     }
 
     public Game() {
@@ -153,7 +170,14 @@ public class Game implements Initializable {
     }
 
     public void update() {
+        this.level = new TheGnarl(player, this);
+        this.board = new GridPane();
+
+        setBoard();
+
         //playerHP.setProgress((double) player.getMaxHp());
+
+
         playerName.setText(player.getName());
 
         playerIntellect.setText(Integer.toString(player.getIntellect()));
@@ -166,63 +190,107 @@ public class Game implements Initializable {
         playerMP.setProgress((float) player.getCurrentMP() / player.getMaxMP());
         playerXP.setProgress((float) player.getCurrentXP() / player.getMaxXP());
 
-        /*
-        Enemy bat2 = new Bat("Bat", player, this);
-        Enemy bat = new Bat("Bat2", player, this);
-        Enemy bat3 = new Bat("Bat3", player,  this);
 
-        enemies.add(bat);
-        enemies.add(bat2);
-        enemies.add(bat3);
-
-
-        int i = 0;
-        Enemy e = enemies.get(i);
-        if(e.getCurrentHP() == 0){
-          i++;
-        }
-*/
-
-        String key = "key";
-        List<Item> loot = new ArrayList<>();
-        loot.add(new Key("Skeleton key"));
-        loot.add(new Drink("Ale"));
-
-        Room room = new GrassRoom(false, key, ENUMY.EASY, loot, false, player, this);
-        enemies.addAll(room.getEnemies());
-        System.out.println(enemies);
         if (!enemies.isEmpty()) {
+
+
             for (int i = 0; i < enemies.size(); i++) {
 
+                enemies.get(i).getCurrentHP();
                 if (enemies.size() >= 1) {
                     enemyNameOne.setText(enemies.get(0).getName());
                     enemyHPOne.setProgress((float) enemies.get(0).getCurrentHP() / enemies.get(0).getMaxHP());
                     enemyMPOne.setProgress((float) enemies.get(0).getCurrentMP() / enemies.get(0).getMaxMP());
+                    enemyAttackOne.setDisable(false);
                 }
                 if (enemies.size() >= 2) {
                     enemyNameTwo.setText(enemies.get(1).getName());
                     enemyHPTwo.setProgress((float) enemies.get(1).getCurrentHP() / enemies.get(1).getMaxHP());
                     enemyMPTwo.setProgress((float) enemies.get(1).getCurrentMP() / enemies.get(1).getMaxMP());
+                    enemyAttackTwo.setDisable(false);
                 }
                 if (enemies.size() >= 3) {
                     enemyNameThree.setText(enemies.get(2).getName());
                     enemyHPThree.setProgress((float) enemies.get(2).getCurrentHP() / enemies.get(2).getMaxHP());
                     enemyMPThree.setProgress((float) enemies.get(2).getCurrentMP() / enemies.get(2).getMaxMP());
+                    enemyAttackThree.setDisable(false);
                 }
                 if (enemies.size() >= 4) {
                     enemyNameFour.setText(enemies.get(3).getName());
                     enemyHPFour.setProgress((float) enemies.get(3).getCurrentHP() / enemies.get(3).getMaxHP());
                     enemyMPFour.setProgress((float) enemies.get(3).getCurrentMP() / enemies.get(3).getMaxMP());
+                    enemyAttackFour.setDisable(false);
                 }
                 if (enemies.size() >= 5) {
                     enemyNameFive.setText(enemies.get(4).getName());
                     enemyHPFive.setProgress((float) enemies.get(4).getCurrentHP() / enemies.get(4).getMaxHP());
                     enemyMPFive.setProgress((float) enemies.get(4).getCurrentMP() / enemies.get(4).getMaxMP());
+                    enemyAttackFive.setDisable(false);
+
+
                 }
 
             }
 
 
+        }
+        setBoard();
+    }
+
+    public void setEnemie(){
+        
+    }
+
+    public void setBoard() {
+        gridLabel = new Label[this.level.getWidth()][this.level.getHeight()];
+
+        for (int row = 0; row < this.level.getHeight(); row++) {
+            for (int col = 0; col < this.level.getWidth(); col++) {
+                if (this.level.getRoom(row, col).getName().equals("nothing")) {
+                    gridLabel[row][col] = new Label("X");
+                    gridLabel[row][col].setText("X");
+                    board.add(gridLabel[row][col], row, col);
+                } else {
+                    gridLabel[row][col] = new Label(this.level.getRoom(row, col).getName());
+                    gridLabel[row][col].setText(this.level.getRoom(row, col).getName());
+                    board.add(gridLabel[row][col], row, col);
+                }
+            }
+
+        }
+
+        System.out.println(gridLabel[4][2].getText());
+        System.out.println(gridLabel[0][0].getText());
+
+
+
+
+    }
+
+    public void attackEnemy(javafx.event.ActionEvent ae) {
+        if (ae.getSource().equals(enemyAttackOne)) {
+            player.attack(enemies.get(0));
+            update();
+        }
+        if (ae.getSource().equals(enemyAttackTwo)) {
+            player.attack(enemies.get(1));
+            update();
+        }
+        if (ae.getSource().equals(enemyAttackThree)) {
+            player.attack(enemies.get(2));
+            update();
+        }
+        if (ae.getSource().equals(enemyAttackFour)) {
+            player.attack(enemies.get(3));
+            update();
+        }
+        if (ae.getSource().equals(enemyAttackFive)) {
+            player.attack(enemies.get(4));
+            update();
+        }
+
+        for (Enemy e : enemies) {
+            e.attack();
         }
 
     }
@@ -236,6 +304,11 @@ public class Game implements Initializable {
 
 
     }
+
+    public void createEnemies() {
+
+    }
+
 
     public void magicButton() {
         player.setCurrentMp(-10);

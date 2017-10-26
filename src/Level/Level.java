@@ -2,15 +2,22 @@ package Level;
 
 
 import Room.Room;
+import TitleScreen.Game;
+import Player.*;
+
+import java.util.Arrays;
 
 public abstract class Level {
-    private String name;
-    private int width;
-    private int height;
-    private Room[][] level;
+    protected String name;
+    protected int width;
+    protected int height;
+    protected Room[][] level;
+    protected Player player;
+    protected Game game;
 
-    public Level() {
-
+    public Level(Player player, Game game) {
+        this.player = player;
+        this.game = game;
     }
 
     public Room getRoom(int x, int y) {
@@ -47,5 +54,15 @@ public abstract class Level {
 
     public void setLevel(Room[][] level) {
         this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "Level{" +
+                "name='" + name + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", level=" + Arrays.toString(level) +
+                '}';
     }
 }

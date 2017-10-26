@@ -1,9 +1,9 @@
 package Tools;
 
-class EnemyTimer {
+public class EnemyTimer {
     static Thread thread;
 
-    public boolean countDown(){
+    public void countDown(){
         thread = new Thread();
         for(int i = 10; i >=0; i--){
 
@@ -13,6 +13,6 @@ class EnemyTimer {
                 e.printStackTrace();
             }
         }
-        return false;
+
     }
 }

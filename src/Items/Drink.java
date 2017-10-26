@@ -1,13 +1,8 @@
 package Items;
 
-public class Drink implements Item {
-    public Drink(String name){
-
-    }
-
-    @Override
-    public void takeItem() {
-
+public class Drink extends Item {
+    public Drink(String name, int quantity, int maxQuantity) {
+        super(name, quantity, maxQuantity);
     }
 
     @Override

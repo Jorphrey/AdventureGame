@@ -1,16 +1,21 @@
-package Enemy.GrassEnemy;
+package Enemy.CritterEnemy;
 
-import Enemy.ENUMYTYPE;
+import Enemy.ENUMYRoom;
 import Player.Player;
 import TitleScreen.Game;
 
-import java.util.HashSet;
+public class Rat extends CritterEnemy {
+    public static int enemyCount = 1;
 
-public class Rat extends GrassEnemy {
+    public Rat(Player player, Game game, ENUMYRoom enumy) {
+        super(player, game, enumy);
 
-
-    public Rat(Player player, Game game, int maxLevel, ENUMYTYPE enumy, HashSet<String> shell, int defense) {
-        super(player, game, maxLevel, enumy, shell, defense);
+        if (enemyCount > 1) {
+            this.name = "Rat " + enemyCount;
+        } else {
+            this.name = "Rat";
+        }
+        this.shell.add("fire");
     }
 }
 

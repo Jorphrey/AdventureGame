@@ -1,30 +1,32 @@
 package Room;
 
-import Enemy.ENUMY;
-import Enemy.ENUMYTYPE;
-import Enemy.Enemy;
-import Enemy.GrassEnemy.GrassEnumy;
+import Enemy.ENUMYDifficulty;
+import Enemy.CritterEnemy.CritterENUM;
+import Enemy.ENUMYRoom;
 import Items.Item;
 import Player.Player;
 import TitleScreen.Game;
 
 import java.util.List;
+import java.util.Set;
 
 public class GrassRoom extends Room {
 
-    private Enemy enemy;
 
-    public GrassRoom(boolean isLocked, String unlocker, ENUMY enumy, List<Item> loot, boolean hasPuzzle, Player player, Game game) {
-        super(isLocked, unlocker, enumy, loot, hasPuzzle, player, game);
-        this.name = "Grass";
-        this.enumyType = ENUMYTYPE.GRASS;
+    public GrassRoom(String name, boolean isLocked, String unlocker, ENUMYDifficulty enumyDifficulty, Set<Item> loot, boolean hasPuzzle,
+                     boolean hasEnemy, Player player, Game game) {
+        super(name, isLocked, unlocker, enumyDifficulty, loot, hasPuzzle, hasEnemy, player, game);
+        this.enumyType = ENUMYRoom.GRASS;
 
-        rand = random.nextInt((enumy.getMax() - enumy.getMin() + 1) + enumy.getMin());
-        for (int i = 0; i < rand; i++) {
-            enemies.add(enemyFactory.makeEnemy(this.enumyType, GrassEnumy.values().length, this.player, this.game));
+        if (hasEnemy) {
+            rand = random.nextInt((enumyDifficulty.getMax() - enumyDifficulty.getMin() + 1) + enumyDifficulty.getMin());
+
+            for (int i = 0; i < rand; i++) {
+                enemies.add(this.enemyFactory.makeEnemy(this.enumyType, CritterENUM.values().length, this.player, this.game));
+            }
         }
-    }
 
+    }
 }
 
 

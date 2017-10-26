@@ -1,15 +1,20 @@
-package Enemy.GrassEnemy;
+package Enemy.CritterEnemy;
 
-import Enemy.ENUMYTYPE;
+import Enemy.ENUMYRoom;
 import Player.Player;
 import TitleScreen.Game;
 
-import java.util.HashSet;
+public class Millipede extends CritterEnemy {
+    public static int enemyCount = 1;
 
-public class Millipede extends GrassEnemy {
-
-    public Millipede(Player player, Game game, ENUMYTYPE enumy) {
+    public Millipede(Player player, Game game, ENUMYRoom enumy) {
         super(player, game, enumy);
+        if (enemyCount > 1) {
+            this.name = "Millipede " + enemyCount;
+        } else {
+            this.name = "Millipede";
+        }
+        this.shell.add("fire");
     }
 }
 

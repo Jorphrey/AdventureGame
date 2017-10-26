@@ -1,4 +1,4 @@
 package Enemy.EnemyAttacks.Abilities;
 
-public class FarAttack {
+public interface FarAttack {
 }

@@ -1,4 +1,4 @@
 package Enemy.EnemyAttacks.Abilities;
 
-public class WildAttack {
+public interface WildAttack {
 }
