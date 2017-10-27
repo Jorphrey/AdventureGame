@@ -86,7 +86,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </TextField>
-            <Button fx:id="fwd" mnemonicParsing="false" text="Fwd" GridPane.columnIndex="4">
+            <Button fx:id="northButton" minWidth="35.0" mnemonicParsing="false" onAction="#playerMove" text="N" GridPane.columnIndex="4" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -94,7 +94,7 @@
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="left" layoutX="560.0" layoutY="13.0" mnemonicParsing="false" text="Left" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Button fx:id="westButton" layoutX="560.0" layoutY="13.0" minWidth="35.0" mnemonicParsing="false" onAction="#playerMove" text="W" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" top="5.0" />
                </GridPane.margin>
@@ -102,7 +102,7 @@
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="right" layoutX="515.0" layoutY="43.0" mnemonicParsing="false" text="Right" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <Button fx:id="eastButton" layoutX="515.0" layoutY="43.0" minWidth="35.0" mnemonicParsing="false" onAction="#playerMove" text="E" GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets bottom="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -110,15 +110,15 @@
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="560.0" layoutY="13.0" mnemonicParsing="false" text="Back" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Button fx:id="southButton" layoutX="560.0" layoutY="13.0" minWidth="35.0" mnemonicParsing="false" onAction="#playerMove" text="S" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
                <font>
                   <Font size="9.0" />
                </font>
             </Button>
-            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="Enter" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="enterButton" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="Update" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -133,17 +133,17 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="attackButton" mnemonicParsing="false" onAction="#setBoard" text="Attack" GridPane.columnIndex="6">
+            <Button fx:id="attackButton" mnemonicParsing="false" onAction="#setBoard" text="Board" GridPane.columnIndex="6">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="magicButton" mnemonicParsing="false" onAction="#createEnemies" text="Magic" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <Button fx:id="magicButton" mnemonicParsing="false" text="Magic" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="playerInventory" prefWidth="150.0">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -154,28 +154,28 @@
    <center>
       <SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="400.0" minHeight="400.0" minWidth="400.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane>
+          <AnchorPane fx:id="gridAnchor" maxHeight="250.0" minHeight="250.0" minWidth="400.0" prefHeight="250.0" prefWidth="400.0">
                <children>
-                  <GridPane fx:id="board" alignment="CENTER" gridLinesVisible="true" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0">
-                    <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                  <GridPane fx:id="board" alignment="CENTER" maxHeight="250.0" maxWidth="400.0" minHeight="250.0" minWidth="400.0" prefWidth="400.0">
+                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-                      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
-                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
-                        <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
-                      <RowConstraints minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
-                    </rowConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="40.0" valignment="CENTER" vgrow="ALWAYS" />
+                     </rowConstraints>
                   </GridPane>
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TextArea fx:id="eventScreen" editable="false" layoutX="-1.0" layoutY="-1.0" maxWidth="400.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="400.0" scrollTop="1.0" wrapText="true" />
+                  <TextArea fx:id="eventScreen" editable="false" layoutX="-1.0" layoutY="-1.0" maxHeight="150.0" maxWidth="400.0" minHeight="150.0" minWidth="400.0" prefHeight="150.0" prefWidth="400.0" scrollTop="1.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

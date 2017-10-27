@@ -28,9 +28,13 @@ public class TheGnarl extends Level {
         }
 
 
-        this.level[4][2] = new GrassRoom("The Beginning", false, "unlocked", ENUMYDifficulty.EASY, new LootFactory().getLoot(), false, true, player, game);
-        this.level[3][2] = new GrassRoom("First Puzzle", true, "key", ENUMYDifficulty.NONE, null, true, false, player, game);
-        System.out.println(this.getLevel());
+        this.level[4][2] = new GrassRoom("The Beginning", false, "unlocked",
+                ENUMYDifficulty.NONE, new LootFactory().getLoot(), false, false, player, game);
+        this.getRoom(4,2).enterRoom();
+        this.level[3][2] = new GrassRoom("First Puzzle", true, "key", ENUMYDifficulty.NONE,
+                null, true, false, player, game);
+        this.level[3][1] = new GrassRoom("Fanny Orkin", false, "unlocked", ENUMYDifficulty.NONE,
+                null, true, false, player, game);
     }
 
 

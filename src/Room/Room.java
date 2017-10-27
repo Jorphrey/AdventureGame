@@ -49,10 +49,15 @@ public abstract class Room {
 
     }
 
-    public void unlockRoom() {
-        if (player.getInventory().contains(this.unlocker)) {
+    public void setHasEntered(){
+        this.hasEntered = true;
+    }
+
+    public void unlockRoom(Item unlocker) {
+        if (unlocker.equals(this.unlocker)) {
             this.isLocked = false;
-            player.getInventory().remove(this.unlocker);
+           player.removeInventory(unlocker);
+           game.outputScreen("You have unlocked the door!");
         }
     }
 
@@ -67,6 +72,9 @@ public abstract class Room {
         }
     }
 
+    public void enterRoom(){
+        this.hasEntered = true;
+    }
     public void showEnemy() {
 
 

@@ -7,8 +7,10 @@ import Enemy.Enemy;
 import Items.Item;
 import TitleScreen.Game;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Player {
     private Game game;
@@ -28,11 +30,14 @@ public class Player {
     private int currentXP;
     private int maxXP;
     private int gold;
-    private List<Item> inventory;
+    private int positionX;
+    private int positionY;
+    private Set<Item> inventory;
     private Random random;
     private Boolean isCrit;
 
     public Player(String name, String playerClass, Game game) {
+        this.inventory = new HashSet<Item>();
         this.game = game;
         this.random = new Random();
         this.name = name;
@@ -78,11 +83,53 @@ public class Player {
         if (isCrit) {
             game.outputScreen((this.name + " critted " + e.getName() + " for " + attack + " damage."));
         } else {
-            game.outputScreen((this.name + " attacked " + e.getName() + " for " + attack)+ " damage.");
+            game.outputScreen((this.name + " attacked " + e.getName() + " for " + attack) + " damage.");
         }
         isCrit = false;
     }
 
+    public void removeInventory(Item item) {
+        for (Item i : this.inventory) {
+            if (i.equals(item)) {
+                i.setQuantity(-1);
+            }
+        }
+    }
+
+    public void addToInventory(Item item) {
+        if(!this.inventory.isEmpty()) {
+            for (Item i : this.inventory) {
+                if (i.equals(item)) {
+                    System.out.println("adding to inventory");
+                    i.setQuantity(item.getQuantity());
+                } else {
+                    this.inventory.add(item);
+                    System.out.println("new item");
+                }
+            }
+
+        } else if(this.inventory.isEmpty()){
+            this.inventory.add(item);
+        }
+    }
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
+    }
+
+    public void setPosition(int x, int y) {
+        this.positionX += x;
+        this.positionY += y;
+    }
+
+    public void setStartingPosition(int x, int y) {
+        this.positionX = x;
+        this.positionY = y;
+    }
 
     public String getName() {
         return name;
@@ -209,7 +256,7 @@ public class Player {
         this.gold = gold;
     }
 
-    public List<Item> getInventory() {
+    public Set<Item> getInventory() {
         return inventory;
     }
 
