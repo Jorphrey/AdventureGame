@@ -64,6 +64,10 @@ public class Title implements Initializable {
 
                 try {
 
+                    Stage stage = (Stage) create.getScene().getWindow();
+
+
+
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("Game.fxml"));
                     Parent root1 = fxmlLoader.load();
@@ -75,7 +79,7 @@ public class Title implements Initializable {
                     gameStage.setScene(new Scene(root1));
 
                     gameStage.show();
-
+                    stage.close();
 
                 } catch (IOException e) {
                     e.printStackTrace();

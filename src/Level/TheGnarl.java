@@ -20,7 +20,6 @@ public class TheGnarl extends Level {
         this.level = new Room[this.width][this.height];
 
 
-
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 this.level[row][col] = new NoRoom();
@@ -28,13 +27,17 @@ public class TheGnarl extends Level {
         }
 
 
-        this.level[4][2] = new GrassRoom("The Beginning", false, "unlocked",
+        level[2][4] = new GrassRoom("The Beginning", false, "unlocked",
                 ENUMYDifficulty.NONE, new LootFactory().getLoot(), false, false, player, game);
-        this.getRoom(4,2).enterRoom();
-        this.level[3][2] = new GrassRoom("First Puzzle", true, "key", ENUMYDifficulty.NONE,
+        level[2][4].setRoomDescription("You awake in a dark room.  You cannot see a thing. ");
+        getRoom(2, 4).enterRoom();
+        level[2][3] = new GrassRoom("First Puzzle", false, "key", ENUMYDifficulty.NONE,
                 null, true, false, player, game);
-        this.level[3][1] = new GrassRoom("Fanny Orkin", false, "unlocked", ENUMYDifficulty.NONE,
+        level[2][3].setRoomDescription("A rolling hill with large boulders strewn about. ");
+        level[1][3] = new GrassRoom("Fanny Orkin", false, "unlocked", ENUMYDifficulty.NONE,
                 null, true, false, player, game);
+        level[1][3].setRoomDescription("Another rolling hill.  There appears to be a creature here.  Perhaps it has something" +
+                "to say. ");
     }
 
 

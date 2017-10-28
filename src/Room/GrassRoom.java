@@ -27,6 +27,15 @@ public class GrassRoom extends Room {
         }
 
     }
+
+    @Override
+    public String getUnlockRoomMessage() {
+        switch(this.unlocker){
+            case("key"):
+                return "There is a locked door ahead of you.  You will need a key.";
+        }
+        return null;
+    }
 }
 
 

@@ -1,6 +1,8 @@
-package Items;
+package Items.UniqueItem;
 
-public class UniqueItem extends Item{
+import Items.Item;
+
+public class UniqueItem extends Item {
     private boolean alreadyUsed;
 
     public UniqueItem(String name, int quantity, int maxQuantity) {

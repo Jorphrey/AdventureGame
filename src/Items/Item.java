@@ -41,6 +41,10 @@ public abstract class Item {
         this.quantity = quantity;
     }
 
+    public int getMaxQuantity() {
+        return maxQuantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,10 +63,6 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", maxQuantity=" + maxQuantity +
-                '}';
+        return name;
     }
 }

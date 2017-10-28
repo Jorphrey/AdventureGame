@@ -7,10 +7,8 @@ import TitleScreen.Game;
 import Enemy.EnemyFactory;
 import Enemy.ENUMYRoom;
 import Enemy.ENUMYDifficulty;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+
+import java.util.*;
 
 public abstract class Room {
 
@@ -30,36 +28,35 @@ public abstract class Room {
     protected ENUMYRoom enumyType;
     protected Random random;
     protected ENUMYDifficulty enumyDifficulty;
+    protected String roomDescription;
 
 
     public Room(String name, boolean isLocked, String unlocker, ENUMYDifficulty enumyDifficulty, Set<Item> loot, boolean hasPuzzle, boolean hasEnemy, Player player, Game game) {
         this.name = name;
-        this.enemyFactory = new EnemyFactory();
         this.game = game;
         this.player = player;
         this.isLocked = isLocked;
         this.unlocker = unlocker;
         this.loot = loot;
         this.hasPuzzle = hasPuzzle;
-        this.hasEntered = false;
-        this.enemies = new ArrayList<>();
-        this.random = new Random();
         this.enumyDifficulty = enumyDifficulty;
-
+        enemies = new ArrayList<>();
+        enemyFactory = new EnemyFactory();
+        hasEntered = false;
+        random = new Random();
 
     }
 
-    public void setHasEntered(){
-        this.hasEntered = true;
-    }
 
     public void unlockRoom(Item unlocker) {
         if (unlocker.equals(this.unlocker)) {
             this.isLocked = false;
-           player.removeInventory(unlocker);
-           game.outputScreen("You have unlocked the door!");
+            player.removeInventory(unlocker);
+            game.outputScreen("You have unlocked the door!");
         }
     }
+
+    public abstract String getUnlockRoomMessage();
 
     public void hasLoot() {
         if (this.loot.isEmpty()) {
@@ -72,9 +69,38 @@ public abstract class Room {
         }
     }
 
-    public void enterRoom(){
+    public String getRoomDescription() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("");
+        if (!hasEntered) {
+            sb.append(name + ": " + roomDescription);
+        }
+        if (hasEntered) {
+            sb.append(name + ": " + "A familiar place. \n");
+        }
+        if (hasEnemy) {
+            if (this.enemies.size() > 1) {
+                sb.append("There are monsters in the area. \n");
+            } else {
+                sb.append("There is a monster in the area. \n");
+            }
+        }
+        if (hasPuzzle) {
+            sb.append("A cunning puzzle awaits you. \n");
+        }
+
+        return sb.toString();
+    }
+
+
+    public void setRoomDescription(String roomDescription) {
+        this.roomDescription = roomDescription;
+    }
+
+    public void enterRoom() {
         this.hasEntered = true;
     }
+
     public void showEnemy() {
 
 
@@ -86,7 +112,7 @@ public abstract class Room {
 
     }
 
-    public EnemyFactory getEnemyFactory(){
+    public EnemyFactory getEnemyFactory() {
         return this.enemyFactory;
     }
 
@@ -133,5 +159,19 @@ public abstract class Room {
 
     public Set<Item> getLoot() {
         return loot;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return Objects.equals(getName(), room.getName());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getName());
     }
 }

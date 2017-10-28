@@ -65,7 +65,7 @@ public class Player {
             case "RadioButton[id=rogue, styleClass=radio-button]'rogue'":
                 this.intellect = 10;
                 this.strength = 10;
-                this.agility = 10;
+                this.agility = 30;
         }
     }
 
@@ -100,8 +100,12 @@ public class Player {
         if(!this.inventory.isEmpty()) {
             for (Item i : this.inventory) {
                 if (i.equals(item)) {
-                    System.out.println("adding to inventory");
-                    i.setQuantity(item.getQuantity());
+                    if(i.getQuantity() + item.getQuantity() > i.getMaxQuantity()){
+                        i.setQuantity(i.getMaxQuantity());
+                    } else {
+                        System.out.println("adding to inventory");
+                        i.setQuantity(item.getQuantity());
+                    }
                 } else {
                     this.inventory.add(item);
                     System.out.println("new item");
@@ -111,6 +115,15 @@ public class Player {
         } else if(this.inventory.isEmpty()){
             this.inventory.add(item);
         }
+    }
+
+    public Item getInventoryItem(String name){
+        for(Item i : inventory){
+            if(i.getName().equals(name)){
+                return i;
+            }
+        }
+        return null;
     }
 
     public int getPositionX() {
