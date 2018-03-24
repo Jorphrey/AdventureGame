@@ -173,15 +173,15 @@ public class Game implements Initializable {
 
         playerName.setText(player.getName());
 
-        playerIntellect.setText(Integer.toString(player.getIntellect()));
-        playerStrength.setText(Integer.toString(player.getStrength()));
-        playerAgility.setText(Integer.toString(player.getAgility()));
-        playerDefense.setText(Integer.toString(player.getDefense()));
-        playerShell.setText(Integer.toString(player.getShell()));
-        playerLevel.setText("Level: " + Integer.toString(player.getLevel()));
-        playerHP.setProgress((float) player.getCurrentHP() / player.getMaxHP());
-        playerMP.setProgress((float) player.getCurrentMP() / player.getMaxMP());
-        playerXP.setProgress((float) player.getCurrentXP() / player.getMaxXP());
+        playerIntellect.setText(Integer.toString(player.getmIntellect()));
+        playerStrength.setText(Integer.toString(player.getmStrength()));
+        playerAgility.setText(Integer.toString(player.getmAgility()));
+        playerDefense.setText(Integer.toString(player.getmDefense()));
+        playerShell.setText(Integer.toString(player.getmShell()));
+        playerLevel.setText("Level: " + Integer.toString(player.getmLevel()));
+        playerHP.setProgress((float) player.getmCurrentHP() / player.getmMaxHP());
+        playerMP.setProgress((float) player.getmCurrentMP() / player.getmMaxMP());
+        playerXP.setProgress((float) player.getmCurrentXP() / player.getmMaxXP());
 
     }
 
@@ -288,7 +288,7 @@ public class Game implements Initializable {
         playerInventoryObservableListEnvironment = FXCollections.observableArrayList();
         playerInventoryObservableListSelf = FXCollections.observableArrayList();
 
-        for (Item e : player.getInventory()) {
+        for (Item e : player.getmInventory()) {
             if (e instanceof EnvironmentUseItem) {
                 playerInventoryObservableListEnvironment.add(e.getName());
             } else if (e instanceof SelfUseItem) {

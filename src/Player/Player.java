@@ -4,144 +4,105 @@ package Player;
 
 
 import Enemy.Enemy;
+import Inventory.Inventory;
 import Items.Item;
-import TitleScreen.Game;
-
-import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class Player {
-    private Game game;
-    private Enemy e;
-    private String name;
-    private String playerClass;
-    private int maxHP;
-    private int maxMP;
-    private int currentMP;
-    private int currentHP;
-    private int intellect;
-    private int strength;
-    private int agility;
-    private int defense;
-    private int shell;
-    private int level;
-    private int currentXP;
-    private int maxXP;
-    private int gold;
-    private int positionX;
-    private int positionY;
-    private Set<Item> inventory;
-    private Random random;
-    private Boolean isCrit;
+public class Player extends Interactive {
+    private String mPlayerClass;
+    private int mMaxHP;
+    private int mMaxMP;
+    private int mCurrentMP;
+    private int mCurrentHP;
+    private int mIntellect;
+    private int mStrength;
+    private int mAgility;
+    private int mDefense;
+    private int mShell;
+    private int mLevel;
+    private int mCurrentXP;
+    private int mMaxXP;
+    private int mGold;
+    private int mPositionX;
+    private int mPositionY;
+    private Inventory mInventory;
+    private Random mRandom;
+    private Boolean mIsCrit;
 
-    public Player(String name, String playerClass, Game game) {
-        this.inventory = new HashSet<Item>();
-        this.game = game;
-        this.random = new Random();
-        this.name = name;
-        this.level = 1;
-        this.currentXP = 0;
-        this.maxXP = 100;
-        this.maxMP = 100;
-        this.maxHP = 100;
-        this.currentHP = this.maxHP;
-        this.currentMP = this.maxMP;
-        this.playerClass = playerClass;
-        this.defense = 0;
-        this.shell = 0;
-        this.isCrit = false;
-        switch (playerClass) {
+    public Player(String name, String mPlayerClass) {
+        super(name);
+        this.mPlayerClass = mPlayerClass;
+        mInventory = new Inventory();
+        mRandom = new Random();
+        mLevel = 1;
+        mCurrentXP = 0;
+        mMaxXP = 100;
+        mMaxMP = 100;
+        mMaxHP = 100;
+        mCurrentHP = mMaxHP;
+        mCurrentMP = mMaxMP;
+        mDefense = 0;
+        mShell = 0;
+        mIsCrit = false;
+        switch (mPlayerClass) {
             case "RadioButton[id=wizard, styleClass=radio-button]'Wizard'":
-                this.intellect = 30;
-                this.strength = 10;
-                this.agility = 10;
+                mIntellect = 30;
+                mStrength = 10;
+                mAgility = 10;
             case "RadioButton[id=warrior, styleClass=radio-button]'Warrior'":
-                this.intellect = 10;
-                this.strength = 30;
-                this.agility = 10;
-
+                mIntellect = 10;
+                mStrength = 30;
+                mAgility = 10;
             case "RadioButton[id=rogue, styleClass=radio-button]'rogue'":
-                this.intellect = 10;
-                this.strength = 10;
-                this.agility = 30;
+                mIntellect = 10;
+                mStrength = 10;
+                mAgility = 30;
         }
     }
 
-    public void attack(Enemy e) {
-        int attack = random.nextInt((this.strength + this.level * 5) - (this.strength - this.level * 5) + 1
-                + this.strength - this.level * 5);
+    public void playerInit(){
 
-        if (random.nextInt((100 - 0) - 0) < this.agility) {
-            isCrit = true;
+    }
+
+
+    public void attack(Enemy e) {
+        int attack = mRandom.nextInt((mStrength + mLevel * 5) - (mStrength - mLevel * 5) + 1
+                + mStrength - mLevel * 5);
+
+        if (mRandom.nextInt((100 - 0) - 0) < mAgility) {
+            mIsCrit = true;
             attack = attack * 2;
         }
 
         e.setCurrentHP(-attack);
 
-        if (isCrit) {
-            game.outputScreen((this.name + " critted " + e.getName() + " for " + attack + " damage."));
+        if (mIsCrit) {
+            game.outputScreen((name + " critted " + e.getName() + " for " + attack + " damage."));
         } else {
-            game.outputScreen((this.name + " attacked " + e.getName() + " for " + attack) + " damage.");
+            game.outputScreen((name + " attacked " + e.getName() + " for " + attack) + " damage.");
         }
-        isCrit = false;
+        mIsCrit = false;
     }
 
-    public void removeInventory(Item item) {
-        for (Item i : this.inventory) {
-            if (i.equals(item)) {
-                i.setQuantity(-1);
-            }
-        }
-    }
 
-    public void addToInventory(Item item) {
-        if(!this.inventory.isEmpty()) {
-            for (Item i : this.inventory) {
-                if (i.equals(item)) {
-                    if(i.getQuantity() + item.getQuantity() > i.getMaxQuantity()){
-                        i.setQuantity(i.getMaxQuantity());
-                    } else {
-                        System.out.println("adding to inventory");
-                        i.setQuantity(item.getQuantity());
-                    }
-                } else {
-                    this.inventory.add(item);
-                    System.out.println("new item");
-                }
-            }
-
-        } else if(this.inventory.isEmpty()){
-            this.inventory.add(item);
-        }
-    }
-
-    public Item getInventoryItem(String name){
-        for(Item i : inventory){
-            if(i.getName().equals(name)){
-                return i;
-            }
-        }
-        return null;
-    }
 
     public int getPositionX() {
-        return positionX;
+        return mPositionX;
     }
 
     public int getPositionY() {
-        return positionY;
+        return mPositionY;
     }
 
     public void setPosition(int x, int y) {
-        this.positionX += x;
-        this.positionY += y;
+        mPositionX += x;
+        mPositionY += y;
     }
 
     public void setStartingPosition(int x, int y) {
-        this.positionX = x;
-        this.positionY = y;
+        mPositionX = x;
+        mPositionY = y;
     }
 
     public String getName() {
@@ -149,128 +110,128 @@ public class Player {
     }
 
     public void setName(String name) {
-        this.name = name;
+        name = name;
     }
 
-    public String getPlayerClass() {
-        return playerClass;
+    public String getmPlayerClass() {
+        return mPlayerClass;
     }
 
-    public void setPlayerClass(String playerClass) {
-        this.playerClass = playerClass;
+    public void setmPlayerClass(String mPlayerClass) {
+        mPlayerClass = mPlayerClass;
     }
 
-    public int getMaxHP() {
-        return this.maxHP;
+    public int getmMaxHP() {
+        return mMaxHP;
     }
 
-    public void setMaxHP(int hp) {
-        this.maxHP += hp;
+    public void setmMaxHP(int hp) {
+        mMaxHP += hp;
     }
 
-    public int getMaxMP() {
-        return this.maxMP;
+    public int getmMaxMP() {
+        return mMaxMP;
     }
 
-    public void setMaxMP(int mp) {
-        this.maxMP += mp;
+    public void setmMaxMP(int mp) {
+        mMaxMP += mp;
     }
 
-    public int getIntellect() {
-        return intellect;
+    public int getmIntellect() {
+        return mIntellect;
     }
 
-    public void setIntellect(int intellect) {
-        this.intellect += intellect;
+    public void setmIntellect(int mIntellect) {
+        mIntellect += mIntellect;
     }
 
-    public int getStrength() {
-        return strength;
+    public int getmStrength() {
+        return mStrength;
     }
 
-    public void setStrength(int strength) {
-        strength += strength;
+    public void setmStrength(int mStrength) {
+        mStrength += mStrength;
     }
 
     public String toString() {
         return getName();
     }
 
-    public int getCurrentMP() {
-        return this.currentMP;
+    public int getmCurrentMP() {
+        return mCurrentMP;
     }
 
-    public int getCurrentHP() {
-        return this.currentHP;
+    public int getmCurrentHP() {
+        return mCurrentHP;
     }
 
     public void setCurrentMp(int currentMp) {
 
-        this.currentMP += currentMp;
+        mCurrentMP += currentMp;
     }
 
     public void setCurrentHp(int currentHp) {
-        this.currentHP += currentHp;
+        mCurrentHP += currentHp;
     }
 
-    public int getAgility() {
-        return agility;
+    public int getmAgility() {
+        return mAgility;
     }
 
-    public void setAgility(int agility) {
-        this.agility += agility;
+    public void setmAgility(int mAgility) {
+        mAgility += mAgility;
     }
 
-    public int getDefense() {
-        return defense;
+    public int getmDefense() {
+        return mDefense;
     }
 
-    public void setDefense(int defense) {
-        this.defense += defense;
+    public void setmDefense(int mDefense) {
+        mDefense += mDefense;
     }
 
-    public int getShell() {
-        return shell;
+    public int getmShell() {
+        return mShell;
     }
 
-    public void setShell(int shell) {
-        this.shell += shell;
+    public void setmShell(int mShell) {
+        mShell += mShell;
     }
 
-    public int getLevel() {
-        return this.level;
+    public int getmLevel() {
+        return mLevel;
     }
 
-    public void setLevel(int level) {
-        this.level += level;
+    public void setmLevel(int mLevel) {
+        mLevel += mLevel;
     }
 
-    public int getCurrentXP() {
-        return currentXP;
+    public int getmCurrentXP() {
+        return mCurrentXP;
     }
 
-    public void setCurrentXP(int currentXP) {
-        this.currentXP += currentXP;
+    public void setmCurrentXP(int mCurrentXP) {
+        mCurrentXP += mCurrentXP;
     }
 
-    public int getMaxXP() {
-        return maxXP;
+    public int getmMaxXP() {
+        return mMaxXP;
     }
 
-    public void setMaxXP(int maxXP) {
-        this.maxXP += maxXP;
+    public void setmMaxXP(int mMaxXP) {
+        mMaxXP += mMaxXP;
     }
 
-    public int getGold() {
-        return gold;
+    public int getmGold() {
+        return mGold;
     }
 
-    public void setGold(int gold) {
-        this.gold = gold;
+    public void setmGold(int mGold) {
+        mGold = mGold;
     }
 
-    public Set<Item> getInventory() {
-        return inventory;
+    public Set<Item> getmInventory() {
+        return mInventory;
     }
 
 

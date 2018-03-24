@@ -1,7 +1,7 @@
 package Enemy.CritterEnemy;
 
 import Enemy.ENUMYRoom;
-import Enemy.EnemyAttacks.Magic.GreenMagic1;
+import Abilities.Magic.GreenMagic1;
 import Player.Player;
 import TitleScreen.Game;
 
